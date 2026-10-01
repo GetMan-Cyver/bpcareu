@@ -1,0 +1,103 @@
+---
+---
+
+<div
+  id="checkoutModal"
+  class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="checkoutModalTitle"
+>
+  <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="p-4 border-b border-slate-200 bg-bpRed-800 text-white flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <i class="fa-brands fa-whatsapp text-amber-300 text-xl"></i>
+        <div>
+          <h3 id="checkoutModalTitle" class="font-extrabold text-sm leading-tight">Konfirmasi Pesanan BPCareU</h3>
+          <p class="text-[10px] text-red-100">Format pesanan WhatsApp resmi & terenkripsi</p>
+        </div>
+      </div>
+      <button
+        id="closeCheckoutModalBtn"
+        type="button"
+        class="w-7 h-7 rounded-full bg-red-900/50 hover:bg-red-900 flex items-center justify-center text-white transition-colors cursor-pointer"
+        aria-label="Tutup Modal Checkout"
+      >
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+
+    <div class="p-5 overflow-y-auto space-y-4">
+      <div class="p-3 rounded-xl bg-red-50 border border-red-200 flex justify-between items-center text-xs">
+        <div>
+          <span class="text-slate-500 block">Total Tagihan:</span>
+          <span id="modalCheckoutTotal" class="font-extrabold text-bpRed-800 text-sm">Rp 0</span>
+        </div>
+        <span id="modalCheckoutItemsCount" class="bg-red-200/70 text-red-900 px-2 py-0.5 rounded font-bold">0 Item</span>
+      </div>
+
+      <form id="orderForm" class="space-y-3">
+        <!-- Honeypot anti-spam trap -->
+        <div class="hidden" aria-hidden="true">
+          <input type="text" id="honeypotWebsite" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="space-y-1">
+          <label for="orderName" class="text-xs font-bold text-slate-700">Nama Penerima <span class="text-red-500">*</span></label>
+          <input
+            type="text"
+            id="orderName"
+            required
+            placeholder="Contoh: Bapak / Ibu Ahmad"
+            maxlength="60"
+            class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+        </div>
+
+        <div class="space-y-1">
+          <label for="orderPhone" class="text-xs font-bold text-slate-700">Nomor WhatsApp <span class="text-red-500">*</span></label>
+          <input
+            type="tel"
+            id="orderPhone"
+            required
+            placeholder="Contoh: 081234567890"
+            maxlength="16"
+            class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+          <span id="phoneError" class="text-[10px] text-red-500 hidden">Format nomor WhatsApp tidak valid (Gunakan format 08xx atau 628xx).</span>
+        </div>
+
+        <div class="space-y-1">
+          <label for="orderAddress" class="text-xs font-bold text-slate-700">Alamat Lengkap Pengiriman <span class="text-red-500">*</span></label>
+          <textarea
+            id="orderAddress"
+            rows="2"
+            required
+            placeholder="Jalan, No. Rumah, RT/RW, Kecamatan, Kota/Kabupaten & Kode Pos"
+            maxlength="200"
+            class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-600"
+          ></textarea>
+        </div>
+
+        <div class="space-y-1">
+          <label for="orderNotes" class="text-xs font-bold text-slate-700">Pilihan Varian / Catatan Paket</label>
+          <input
+            type="text"
+            id="orderNotes"
+            placeholder="Misal: Paket Family (2 Propolis Dewasa + 1 Steffi)"
+            maxlength="120"
+            class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-3 rounded-xl bg-bpRed-700 hover:bg-bpRed-800 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer"
+        >
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          Kirim Format Pesanan ke WhatsApp Admin
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

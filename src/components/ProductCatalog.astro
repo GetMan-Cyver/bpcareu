@@ -1,0 +1,117 @@
+---
+import { PRODUCTS } from '../data/products';
+import { formatRupiah } from '../utils/formatters';
+---
+
+<section id="katalog" class="py-16 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-xs font-bold text-bpRed-700 uppercase tracking-wider block">Katalog Produk Resmi</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Varian Lengkap BP Group</h2>
+        <p class="text-xs text-slate-500 mt-1">Klik pada kartu produk untuk melihat detail khasiat, legalitas BPOM, dan aturan pakai.</p>
+      </div>
+
+      <!-- Category filter buttons -->
+      <div class="flex flex-wrap gap-2" id="filterContainer">
+        <button
+          type="button"
+          data-category="all"
+          class="filter-tab active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-bpRed-700 text-white shadow-xs cursor-pointer transition-all"
+        >
+          Semua
+        </button>
+        <button
+          type="button"
+          data-category="propolis"
+          class="filter-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer transition-all"
+        >
+          Propolis
+        </button>
+        <button
+          type="button"
+          data-category="stevia"
+          class="filter-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer transition-all"
+        >
+          Steffi Stevia
+        </button>
+        <button
+          type="button"
+          data-category="specialty"
+          class="filter-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer transition-all"
+        >
+          Brassic & Norway
+        </button>
+      </div>
+    </div>
+
+    <!-- Products Grid (SSR for instant SEO & fast paint) -->
+    <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {PRODUCTS.map(p => (
+        <div
+          data-product-card
+          data-id={p.id}
+          data-category={p.category}
+          class="product-card bg-white rounded-3xl p-5 border border-slate-200 hover:border-bpRed-600 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer relative"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md uppercase">{p.volume}</span>
+              <span class="text-[10px] font-mono font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">{p.bpom}</span>
+            </div>
+
+            <!-- Product Image Showcase with Fallback -->
+            <div class="w-full h-48 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100 flex items-center justify-center p-3 mb-4 group-hover:bg-red-50/40 transition-colors overflow-hidden relative">
+              <img
+                src={p.image}
+                alt={p.name}
+                loading="lazy"
+                data-fallback={`https://placehold.co/400x400/f8fafc/991b1b?text=${p.fallbackPlaceholder}`}
+                class="product-img w-full h-full object-contain group-hover:scale-108 transition-transform duration-300 drop-shadow-sm"
+              />
+              <span class="absolute bottom-2 right-2 text-[10px] font-bold bg-white/90 backdrop-blur-xs text-slate-700 px-2 py-0.5 rounded-md shadow-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                <i class="fa-solid fa-magnifying-glass-plus text-bpRed-700"></i> Detail
+              </span>
+            </div>
+
+            <div class="mb-1">
+              <span class="text-[10px] font-extrabold text-bpRed-700 uppercase tracking-wide block">{p.badge}</span>
+              <h3 class="font-extrabold text-slate-900 group-hover:text-bpRed-700 transition-colors text-base leading-snug">
+                {p.name}
+              </h3>
+            </div>
+
+            <p class="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
+              {p.shortDesc}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between action-bar" onclick="event.stopPropagation()">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-medium">Harga Resmi Satuan</span>
+              <span class="text-base font-extrabold text-bpRed-800">Rp {formatRupiah(p.price)}</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button
+                type="button"
+                data-detail-id={p.id}
+                class="btn-open-detail py-2 px-3 rounded-xl border border-slate-200 hover:border-bpRed-600 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all cursor-pointer"
+                title="Buka Detail"
+              >
+                Detail
+              </button>
+              <button
+                type="button"
+                data-buy-id={p.id}
+                class="btn-add-cart py-2 px-3.5 rounded-xl bg-bpRed-700 hover:bg-bpRed-800 text-white text-xs font-bold shadow-xs hover:shadow transition-all flex items-center gap-1.5 cursor-pointer"
+                title="Tambah ke Keranjang"
+              >
+                <i class="fa-solid fa-plus text-[10px]"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

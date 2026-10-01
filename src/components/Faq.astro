@@ -1,0 +1,30 @@
+---
+import { FAQ_ITEMS } from '../data/faq';
+---
+
+<section id="faq" class="py-16 bg-white border-t border-slate-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="text-center space-y-2">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      <p class="text-slate-600 text-xs sm:text-sm">Pertanyaan umum seputar keaslian produk dan paket kemitraan.</p>
+    </div>
+
+    <div class="space-y-3">
+      {FAQ_ITEMS.map((item) => (
+        <div class="faq-item bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+          <button
+            type="button"
+            data-faq-id={item.id}
+            class="faq-trigger w-full p-4 text-left font-bold text-sm text-slate-800 flex justify-between items-center hover:bg-slate-100 transition-colors cursor-pointer"
+          >
+            <span>{item.question}</span>
+            <i class="faq-icon fa-solid fa-chevron-down text-bpRed-700 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-200/60 pt-3">
+            {item.answer}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
