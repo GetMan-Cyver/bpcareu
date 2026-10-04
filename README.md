@@ -1,6 +1,6 @@
 # BPCareU - Official Store & Partnership Portal
 
-Situs resmi katalog produk kesehatan dan paket kemitraan **BP Group** (British Propolis, Steffi Stevia, Brassic Eye, Brassic Pro, dan BP Norway Salmon Fish Oil) yang telah dimigrasikan ke arsitektur modern berbasis **Astro 5**.
+Situs resmi katalog produk kesehatan dan kemitraan **BP Group** (British Propolis, Steffi Stevia, Brassic Eye, Brassic Pro, dan BP Norway Salmon Fish Oil) yang telah dimigrasikan ke arsitektur modern berbasis **Astro 5**.
 
 ---
 
@@ -84,29 +84,37 @@ bpcareu/
 ## 💻 Panduan Menjalankan
 
 ### 1. Instalasi Dependensi
+
 ```bash
 npm install
 ```
 
 ### 2. Mode Pengembangan (Development)
+
 ```bash
 npm run dev
 ```
+
 Buka peramban di `http://localhost:4321`.
 
 ### 3. Pengujian Otomatis (Testing)
+
 Menjalankan seluruh unit test (integritas data produk, kalkulator dosis, validasi nomor HP, pembuat pesan WhatsApp, dan verifikasi keluaran build):
+
 ```bash
 npm test
 ```
 
 ### 4. Build untuk Produksi
+
 ```bash
 npm run build
 ```
-Hasil berkas produksi yang telah dioptimasi, diminifikasi, dan di-*bundle* akan berada di folder `dist/`.
+
+Hasil berkas produksi yang telah dioptimasi, diminifikasi, dan di-_bundle_ akan berada di folder `dist/`.
 
 ### 5. Pratinjau Hasil Build (Preview)
+
 ```bash
 npm run preview
 ```
