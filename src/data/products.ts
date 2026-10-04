@@ -33,7 +33,7 @@ export const PRODUCTS: Product[] = [
     name: "British Propolis Green Kids",
     category: "propolis",
     volume: "6 ml (±120 tetes)",
-    price: 265000,
+    price: 285000,
     bpom: "POM TR 193631981",
     badge: "Pilihan Ibu Cerdas",
     tagline: "Suplemen Imunitas & Nafsu Makan Anak",
